@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigation"
+    app:startDestination="@id/fragment_note_tracker">
+
+    <fragment
+        android:id="@+id/fragment_note_tracker"
+        android:name="com.example.note.ui.notetracker.NoteTrackerFragment"
+        android:label="fragment_note_tracker"
+        tools:layout="@layout/fragment_note_tracker">
+
+        <action
+            android:id="@+id/fragmentNoteTracker_to_fragmentNoteContent"
+            app:destination="@id/fragment_note_content"
+            app:enterAnim="@anim/slide_in_right"
+            app:popEnterAnim="@anim/slide_in_right" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/fragment_note_content"
+        android:name="com.example.note.ui.notecontent.NoteContentFragment"
+        android:label="fragment_note_content"
+        tools:layout="@layout/fragment_note_content">
+
+        <argument
+            android:name="noteId"
+            android:defaultValue="-1"
+            app:argType="integer" />
+
+        <action
+            android:id="@+id/action_fragmentNoteContent_to_fragmentNoteTracker"
+            app:destination="@id/fragment_note_tracker"
+            app:launchSingleTop="false"
+            app:popUpTo="@+id/fragment_note_tracker"
+            app:popUpToInclusive="true" />
+    </fragment>
+</navigation>
