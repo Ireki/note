@@ -49,4 +49,10 @@ class NoteContentFragment: Fragment() {
         binding.noteContentViewModel = viewModel
     }
 
+
+    override fun onPause() {
+        super.onPause()
+        viewModel.saveNote()
+    }
+
 }

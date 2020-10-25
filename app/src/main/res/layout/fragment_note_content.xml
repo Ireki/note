@@ -30,15 +30,5 @@
 
         </com.google.android.material.textfield.TextInputLayout>
 
-
-        <Button
-            android:id="@+id/button_test"
-            android:text="+"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            android:onClick="@{() -> noteContentViewModel.saveNote()}"/>
-
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

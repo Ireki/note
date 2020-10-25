@@ -1,17 +1,15 @@
 package com.example.note.ui.notecontent
 
-import android.app.Application
 import androidx.lifecycle.*
 import com.example.note.data.Note
-import com.example.note.data.NoteRoomDatabase
 import com.example.note.repo.NoteRepository
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
+
 
 class NoteContentViewModel(
     private val repo: NoteRepository,
-    private val noteId: Int = -1) : ViewModel() {
+    private val noteId: Int = -1
+) : ViewModel() {
 
     var  noteBeingModified: Note = emptyNote
 
@@ -41,6 +39,7 @@ class NoteContentViewModel(
             update(noteBeingModified)
         }
     }
+
 
     private val emptyNote: Note
         get() {
