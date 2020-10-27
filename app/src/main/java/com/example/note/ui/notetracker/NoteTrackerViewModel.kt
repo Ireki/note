@@ -33,7 +33,7 @@ class NoteTrackerViewModel(
     }
 
     fun addNoteContentNavigated() {
-        _navigateNoteContent.value = 0
+        _navigateNoteContent.value = -1
     }
 
     private var _showSnackbarEvent = MutableLiveData<Boolean?>()

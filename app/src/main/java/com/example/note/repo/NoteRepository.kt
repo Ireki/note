@@ -15,7 +15,7 @@ class NoteRepository (private val noteDatabase: NoteRoomDatabase, private val mE
     val noteList: LiveData<List<Note>>
         get() = noteDatabase.noteDao().getAllNotes()
 
-    suspend fun getNote(noteId: Int): LiveData<Note> = noteDatabase.noteDao().getNote(noteId)
+    fun getNote(noteId: Int): LiveData<Note> = noteDatabase.noteDao().getNote(noteId)
 
     fun insert(note: Note) {
         mExecutors.diskIO().execute{ noteDatabase.noteDao().insert(note) }
