@@ -11,38 +11,42 @@ class NoteContentViewModel(
     private val noteId: Int = -1
 ) : ViewModel() {
 
-    var  noteBeingModified: Note = emptyNote
+
+    var noteModified = MutableLiveData<Note>(Note(noteText = ""))
 
     private var isEdit: Boolean = false
 
     init {
         viewModelScope.launch {
             if (noteId != -1) {
-                noteBeingModified = repo.getNote(noteId)
+                //noteModified = repo.getNote(noteId) as MutableLiveData<Note>
                 isEdit = true
             }
         }
     }
 
-    private fun insert(note: Note) {
-        repo.insert(note)
+    private fun insert(note: Note?) {
+        note?.let{
+            repo.insert(it)
+        }
+
     }
 
-    private fun update(note: Note) {
-        repo.update(note)
+    private fun update(note: Note?) {
+        note?.let{
+            repo.update(it)
+        }
+
     }
 
     fun saveNote() {
         if (!isEdit) {
-            insert(noteBeingModified)
+            insert(noteModified.value)
         } else {
-            update(noteBeingModified)
+            update(noteModified.value)
         }
     }
 
 
-    private val emptyNote: Note
-        get() {
-            return Note(noteText = "")
-        }
+
 }

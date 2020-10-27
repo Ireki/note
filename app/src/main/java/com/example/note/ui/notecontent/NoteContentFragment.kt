@@ -18,9 +18,7 @@ import com.example.note.util.provideRepository
 
 class NoteContentFragment: Fragment() {
 
-    private lateinit var binding: FragmentNoteContentBinding
     private lateinit var viewModel : NoteContentViewModel
-
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -28,25 +26,20 @@ class NoteContentFragment: Fragment() {
         savedInstanceState: Bundle?
     ): View? {
 
-        binding = DataBindingUtil.inflate(
+        val binding: FragmentNoteContentBinding = DataBindingUtil.inflate(
             inflater,
             R.layout.fragment_note_content,
             container,
             false
         )
 
-        setHasOptionsMenu(true)
-        return binding.root
-    }
-
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-        (requireActivity() as AppCompatActivity).supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
         val factory = NoteContentViewModelFactory(provideRepository(requireContext()), NoteContentFragmentArgs.fromBundle(requireArguments()).noteId)
         viewModel = ViewModelProvider(this, factory).get(NoteContentViewModel::class.java)
 
         binding.noteContentViewModel = viewModel
+        binding.lifecycleOwner = viewLifecycleOwner
+        return binding.root
     }
 
 
