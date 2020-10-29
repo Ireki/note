@@ -16,7 +16,10 @@
             android:id="@+id/textNote"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:padding="10dp">
+            android:background="@android:color/transparent"
+            android:padding="10dp"
+            android:hint="@string/content_hint"
+            android:gravity="top">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/textEditNote"

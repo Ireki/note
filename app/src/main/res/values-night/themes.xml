@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="Theme.Note.DayNight" parent="Theme.Note.Dark"/>
+
+    <style name="Theme.Note.Dark" parent="Theme.Note">
+        <item name="colorPrimary">@color/color_font</item>
+        <item name="colorSecondary">@color/note_orange_300</item>
+        <item name="colorSecondaryVariant">@color/note_orange_300</item>
+        <item name="colorPrimaryDark">@color/color_header_status</item>
+    </style>
+
+</resources>
