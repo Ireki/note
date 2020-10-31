@@ -16,29 +16,35 @@
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/card"
         android:layout_width="match_parent"
-        android:layout_height="150dp"
+        android:layout_height="140dp"
         android:onClick="@{() ->  noteItemClick.onClick(note)}"
-        android:layout_margin="10dp">
+        android:layout_margin="5dp">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:padding="10dp">
 
-            <TextView
-                android:id="@+id/note_text"
-                android:layout_width="match_parent"
-                android:layout_height="100dp"
-                android:text="@{note.noteText}"
-                app:layout_constraintTop_toTopOf="parent" />
-
 
             <TextView
                 android:id="@+id/note_date"
                 android:layout_width="match_parent"
-                android:layout_height="20dp"
-                android:text="2020/12/12 12:22"
-                app:layout_constraintBottom_toBottomOf="parent"/>
+                android:layout_height="wrap_content"
+                android:gravity="right"
+                android:textSize="@dimen/size_date_text"
+                android:text="@{note.dateUpdate.toString()}"
+                app:layout_constraintTop_toTopOf="parent"/>
+
+            <TextView
+                android:id="@+id/note_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/size_note_text"
+                android:layout_marginTop="3dp"
+                android:text="@{note.noteText}"
+                app:layout_constraintTop_toBottomOf="@+id/note_date" />
+
+
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </com.google.android.material.card.MaterialCardView>

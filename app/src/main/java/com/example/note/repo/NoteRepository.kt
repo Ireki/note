@@ -29,8 +29,8 @@ class NoteRepository (private val noteDatabase: NoteRoomDatabase, private val mE
         mExecutors.diskIO().execute{ noteDatabase.noteDao().delete(note) }
     }
 
-    companion object {
 
+    companion object {
         private var sInstance: NoteRepository? = null
 
         fun getInstance(database: NoteRoomDatabase, executors: AppExecutors): NoteRepository {

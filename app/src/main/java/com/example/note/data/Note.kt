@@ -1,5 +1,6 @@
 package com.example.note.data
 
+import android.icu.text.SimpleDateFormat
 import android.os.Parcelable
 import androidx.room.ColumnInfo
 import androidx.room.Entity
@@ -13,5 +14,8 @@ data class Note(
     var noteId: Int = 0,
 
     @ColumnInfo(name = "note_text")
-    var noteText: String)
+    var noteText: String,
+
+    @ColumnInfo(name = "update_date")
+    var dateUpdate: Date? = null)
 

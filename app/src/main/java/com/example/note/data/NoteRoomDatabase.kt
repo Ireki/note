@@ -8,7 +8,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
 @Database(entities = [Note::class], version = 1)
-//@TypeConverters(Converters::class)
+@TypeConverters(Converters::class)
 abstract class NoteRoomDatabase :RoomDatabase(){
 
     abstract fun noteDao(): NoteDao

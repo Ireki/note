@@ -6,12 +6,12 @@ import java.util.*
 @Suppress("DEPRECATION")
 class Converters {
     @TypeConverter
-    fun fromTimestamp(value: String?): Date? {
+    fun fromTimestamp(value: Long?): Date? {
         return value?.let { Date(it) }
     }
 
     @TypeConverter
-    fun dateToTimestamp(date: Date?): String? {
-        return date?.time?.toString()
+    fun dateToTimestamp(date: Date?): Long? {
+        return date?.time
     }
 }

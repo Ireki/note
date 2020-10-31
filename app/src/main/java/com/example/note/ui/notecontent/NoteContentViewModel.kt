@@ -4,6 +4,7 @@ import androidx.lifecycle.*
 import com.example.note.data.Note
 import com.example.note.repo.NoteRepository
 import kotlinx.coroutines.launch
+import java.util.*
 
 
 class NoteContentViewModel(
@@ -27,12 +28,14 @@ class NoteContentViewModel(
 
     private fun insert(note: Note?) {
         note?.let{
+            it.dateUpdate = Calendar.getInstance().getTime()
             repo.insert(it)
         }
     }
 
     private fun update(note: Note?) {
         note?.let{
+            it.dateUpdate = Calendar.getInstance().getTime()
             repo.update(it)
         }
     }
@@ -40,6 +43,7 @@ class NoteContentViewModel(
     fun saveNote() {
         if (!isEdit) {
             insert(noteModified.value)
+
         } else {
             update(noteModified.value)
         }

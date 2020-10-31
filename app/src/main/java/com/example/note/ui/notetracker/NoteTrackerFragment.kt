@@ -2,8 +2,11 @@ package com.example.note.ui.notetracker
 
 import android.os.Bundle
 import android.view.LayoutInflater
+import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.widget.PopupMenu
+import androidx.appcompat.widget.Toolbar
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
@@ -76,9 +79,20 @@ class NoteTrackerFragment : Fragment(){
             }
         })
 
+        binding.bottomAppBar.setOnMenuItemClickListener( Toolbar.OnMenuItemClickListener() { item: MenuItem? ->
+            if (item?.itemId == R.id.menu_settings){
+                this.findNavController().navigate(
+                    NoteTrackerFragmentDirections
+                        .fragmentNoteTrackerToFragmentSettings()
+                )
+            }
+            true
+        })
 
         binding.noteList.layoutManager = LinearLayoutManager(activity)
         return binding.root
     }
+
+
 
 }

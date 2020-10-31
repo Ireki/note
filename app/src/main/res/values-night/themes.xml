@@ -1,12 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
     <style name="Theme.Note.DayNight" parent="Theme.Note.Dark"/>
 
     <style name="Theme.Note.Dark" parent="Theme.Note">
-        <item name="colorPrimary">@color/color_font</item>
+       <!-- <item name="colorPrimary">@color/color_font</item>
         <item name="colorSecondary">@color/note_orange_300</item>
         <item name="colorSecondaryVariant">@color/note_orange_300</item>
-        <item name="colorPrimaryDark">@color/color_header_status</item>
+        <item name="colorPrimaryDark">@color/color_header_status</item>-->
+
+        <item name="colorPrimary">@color/note_blue_200</item>
+        <item name="colorPrimaryVariant">@color/note_blue_300</item>
+        <item name="colorSecondary">@color/note_orange_300</item>
+        <item name="colorSecondaryVariant">@color/note_orange_300</item>
+
+        <item name="android:colorBackground">@color/note_black_900</item>
+        <item name="colorSurface">@color/note_black_800</item>
+        <item name="colorError">@color/note_red_200</item>
+
+        <item name="colorOnPrimary">@color/note_black_900</item>
+        <item name="colorOnSecondary">@color/note_black_900</item>
+        <item name="colorOnBackground">@color/note_white_50</item>
+        <item name="colorOnSurface">@color/note_white_50</item>
+        <item name="colorOnError">@color/note_black_900</item>
+
+        <item name="scrimBackground">@color/note_black_900_alpha_087</item>
+        <item name="android:statusBarColor">@color/note_black_900_alpha_060</item>
+
+        <item name="elevationOverlayEnabled">true</item>
+        <item name="android:windowLightStatusBar" tools:ignore="NewApi">false</item>
     </style>
 
 </resources>

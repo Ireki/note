@@ -16,6 +16,11 @@
             app:destination="@id/fragment_note_content"
             app:enterAnim="@anim/slide_in_right"
             app:popEnterAnim="@anim/slide_in_right" />
+        <action
+            android:id="@+id/fragmentNoteTracker_to_fragmentSettings"
+            app:destination="@id/mySettingsFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:popEnterAnim="@anim/slide_in_right" />
     </fragment>
 
     <fragment
@@ -35,5 +40,16 @@
             app:launchSingleTop="false"
             app:popUpTo="@+id/fragment_note_tracker"
             app:popUpToInclusive="true" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/mySettingsFragment"
+        android:name="com.example.note.ui.settings.MySettingsFragment"
+        android:label="MySettingsFragment">
+        <action
+            android:id="@+id/fragmentSettings_to_fragmentNoteTracker"
+            app:destination="@id/fragment_note_tracker"
+            app:enterAnim="@anim/slide_in_right"
+            app:popEnterAnim="@anim/slide_in_right" />
     </fragment>
 </navigation>

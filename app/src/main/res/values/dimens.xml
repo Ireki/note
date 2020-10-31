@@ -2,4 +2,6 @@
 <resources>
     <dimen name="bottom_app_bar_fab_radius">32dp</dimen>
     <dimen name="bottom_app_bar_fab_margin">8dp</dimen>
+    <dimen name="size_note_text">20sp</dimen>
+    <dimen name="size_date_text">12sp</dimen>
 </resources>

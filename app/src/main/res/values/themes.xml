@@ -1,7 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
     <style name="Theme.Note.DayNight" parent="Theme.Note"/>
+
     <style name="Theme.Note" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <item name="colorPrimary">@color/note_blue_700</item>
+        <item name="colorPrimaryVariant">@color/note_blue_800</item>
+        <item name="colorSecondary">@color/note_orange_500</item>
+        <item name="colorSecondaryVariant">@color/note_orange_400</item>
+
+        <item name="android:colorBackground">@color/note_blue_50</item>
+        <item name="colorSurface">@color/note_white_50</item>
+        <item name="colorError">@color/note_red_400</item>
+
+        <item name="colorOnPrimary">@color/note_white_50</item>
+        <item name="colorOnSecondary">@color/note_black_900</item>
+        <item name="colorOnBackground">@color/note_black_900</item>
+        <item name="colorOnSurface">@color/note_black_900</item>
+        <item name="colorOnError">@color/note_black_900</item>
+
+        <item name="scrimBackground">@color/note_white_50_alpha_060</item>
+        <item name="android:statusBarColor">@color/note_blue_50_alpha_060</item>
+        <item name="android:navigationBarColor">@color/nav_bar</item>
+        <item name="android:windowLightStatusBar" tools:ignore="NewApi">true</item>
 
     </style>
 
