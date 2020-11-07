@@ -21,6 +21,12 @@
             app:destination="@id/mySettingsFragment"
             app:enterAnim="@anim/slide_in_right"
             app:popEnterAnim="@anim/slide_in_right" />
+
+        <action
+            android:id="@+id/fragmentNoteTracker_to_fragmentAuthorization"
+            app:destination="@id/fragment_authentication"
+            app:enterAnim="@anim/slide_in_right"
+            app:popEnterAnim="@anim/slide_in_right" />
     </fragment>
 
     <fragment
@@ -48,6 +54,20 @@
         android:label="MySettingsFragment">
         <action
             android:id="@+id/fragmentSettings_to_fragmentNoteTracker"
+            app:destination="@id/fragment_note_tracker"
+            app:enterAnim="@anim/slide_in_right"
+            app:popEnterAnim="@anim/slide_in_right" />
+    </fragment>
+
+
+    <fragment
+        android:id="@+id/fragment_authentication"
+        android:name="com.example.note.ui.settings.MySettingsFragment"
+        android:label="fragment_authentication"
+        tools:layout="@layout/fragment_authorization">
+
+        <action
+            android:id="@+id/fragmentAuthorization_to_fragmentNoteTracker"
             app:destination="@id/fragment_note_tracker"
             app:enterAnim="@anim/slide_in_right"
             app:popEnterAnim="@anim/slide_in_right" />

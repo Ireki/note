@@ -9,6 +9,12 @@
         android:title="@string/menu_item_settings" />
 
     <item
+        android:id="@+id/menu_authentication"
+        android:icon="@drawable/ic_authentication_24"
+        app:showAsAction="ifRoom"
+        android:title="@string/menu_item_authentication" />
+
+    <item
         android:id="@+id/menu_delete"
         android:icon="@drawable/ic_delete_24"
         app:showAsAction="ifRoom"

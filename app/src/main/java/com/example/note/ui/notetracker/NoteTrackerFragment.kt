@@ -86,8 +86,15 @@ class NoteTrackerFragment : Fragment(){
                         .fragmentNoteTrackerToFragmentSettings()
                 )
             }
+            if (item?.itemId == R.id.menu_authentication){
+                this.findNavController().navigate(
+                    NoteTrackerFragmentDirections
+                        .fragmentNoteTrackerToFragmentAuthentication()
+                )
+            }
             true
         })
+
 
         binding.noteList.layoutManager = LinearLayoutManager(activity)
         return binding.root

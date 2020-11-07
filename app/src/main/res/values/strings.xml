@@ -6,5 +6,9 @@
     <string name="content_hint">Новая заметка...</string>
     <string name="menu_item_settings">Настройки</string>
     <string name="menu_item_search">Поиск</string>
+    <string name="input">Войти</string>
+    <string name="input_local_button">Продолжить локально</string>
+    <string name="input_google_button">Вход с гугла</string>
+    <string name="menu_item_authentication">Вход</string>
 
 </resources>
