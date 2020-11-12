@@ -36,14 +36,6 @@ class NoteTrackerViewModel(
         _navigateNoteContent.value = -1
     }
 
-    private var _showSnackbarEvent = MutableLiveData<Boolean?>()
-
-    val showSnackBarEvent: LiveData<Boolean?>
-        get() = _showSnackbarEvent
-
-    fun doneShowingSnackbar() {
-        _showSnackbarEvent.value = null
-    }
 
 }
 

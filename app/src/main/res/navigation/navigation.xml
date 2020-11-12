@@ -22,11 +22,6 @@
             app:enterAnim="@anim/slide_in_right"
             app:popEnterAnim="@anim/slide_in_right" />
 
-        <action
-            android:id="@+id/fragmentNoteTracker_to_fragmentAuthorization"
-            app:destination="@id/fragment_authentication"
-            app:enterAnim="@anim/slide_in_right"
-            app:popEnterAnim="@anim/slide_in_right" />
     </fragment>
 
     <fragment
@@ -60,16 +55,15 @@
     </fragment>
 
 
-    <fragment
+   <!-- <fragment
         android:id="@+id/fragment_authentication"
-        android:name="com.example.note.ui.settings.MySettingsFragment"
-        android:label="fragment_authentication"
-        tools:layout="@layout/fragment_authorization">
+        android:label="fragment_authorization"
+        tools:layout="@layout/fui_auth_method_picker_layout">
 
         <action
-            android:id="@+id/fragmentAuthorization_to_fragmentNoteTracker"
+            android:id="@+id/fragmentAuthentication_to_fragmentNoteTracker"
             app:destination="@id/fragment_note_tracker"
             app:enterAnim="@anim/slide_in_right"
             app:popEnterAnim="@anim/slide_in_right" />
-    </fragment>
+    </fragment>-->
 </navigation>

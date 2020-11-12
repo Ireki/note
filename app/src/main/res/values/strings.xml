@@ -10,5 +10,10 @@
     <string name="input_local_button">Продолжить локально</string>
     <string name="input_google_button">Вход с гугла</string>
     <string name="menu_item_authentication">Вход</string>
+    <string name="login_unsuccessful_msg">Login unsuccessful</string>
+    <string name="fact_type_android">Android</string>
+    <string name="fact_type_california">California</string>
 
+    <!--Shared Preference Keys -->
+    <string name="preference_fact_type_key">fact_type_pref</string>
 </resources>
