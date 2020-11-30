@@ -2,23 +2,22 @@ package com.example.note.ui.notecontent
 
 import android.os.Bundle
 import android.view.LayoutInflater
-import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
-import androidx.appcompat.app.AlertDialog
-import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentManager
-import androidx.lifecycle.ViewModelProvider
+import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.navArgs
 import com.example.note.R
 import com.example.note.databinding.FragmentNoteContentBinding
-import com.example.note.util.provideRepository
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class NoteContentFragment: Fragment() {
 
-    private lateinit var viewModel : NoteContentViewModel
+    val viewModel : NoteContentViewModel  by viewModels()
+
+    private val args: NoteContentFragmentArgs by navArgs()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -33,12 +32,10 @@ class NoteContentFragment: Fragment() {
             false
         )
 
-
-        val factory = NoteContentViewModelFactory(provideRepository(requireContext()), NoteContentFragmentArgs.fromBundle(requireArguments()).noteId)
-        viewModel = ViewModelProvider(this, factory).get(NoteContentViewModel::class.java)
-
+        viewModel.setNote(args.noteId)
         binding.noteContentViewModel = viewModel
         binding.lifecycleOwner = viewLifecycleOwner
+
         return binding.root
     }
 

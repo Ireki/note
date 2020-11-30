@@ -1,25 +1,22 @@
 package com.example.note.data
-
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 import androidx.room.*
+import kotlinx.coroutines.flow.Flow
 
 @Dao
 interface NoteDao {
 
     @Insert(onConflict = OnConflictStrategy.IGNORE)
-    fun insert(note: Note)
+    suspend fun insert(note: Note)
 
     @Update(onConflict = OnConflictStrategy.REPLACE)
-    fun update(note: Note)
+    suspend fun update(note: Note)
 
     @Query("select * from notes_table where noteId = :noteId")
-    fun getNote(noteId: Int): LiveData<Note>
-
+    fun getNote(noteId: Int): Flow<Note>
 
     @Query("select * from notes_table order by noteId desc")
-    fun getAllNotes(): LiveData<List<Note>>
+    fun getAllNotes(): Flow<List<Note>>
 
     @Delete
-    fun delete(note: Note)
+    suspend fun delete(note: Note)
 }

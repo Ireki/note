@@ -7,10 +7,12 @@ import android.view.LayoutInflater
 import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
+import androidx.activity.viewModels
 import androidx.appcompat.widget.PopupMenu
 import androidx.appcompat.widget.Toolbar
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
@@ -25,16 +27,17 @@ import com.firebase.ui.auth.AuthUI
 import com.firebase.ui.auth.IdpResponse
 import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.auth.FirebaseAuth
+import dagger.hilt.android.AndroidEntryPoint
 
+
+@AndroidEntryPoint
 class NoteTrackerFragment : Fragment(){
-
-
 
     companion object {
         const val TAG = "LoginFragment"
         const val SIGN_IN_RESULT_CODE = 1001
     }
-
+    val viewModel: NoteTrackerViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -49,22 +52,17 @@ class NoteTrackerFragment : Fragment(){
             false
         )
 
-        val application = requireNotNull(this.activity).application
 
-        val viewModelFactory = NoteTrackerViewModelFactory(application)
-
-        val noteTrackerViewModel = ViewModelProvider(this, viewModelFactory).get(NoteTrackerViewModel::class.java)
-
-        binding.noteTrackerViewModel = noteTrackerViewModel
+        binding.noteTrackerViewModel = viewModel
 
         val adapter = NoteListAdapter(NoteListener { noteId ->
-            noteTrackerViewModel.onNoteClicked(noteId)
+            viewModel.onNoteClicked(noteId)
         })
 
         binding.noteList.adapter = adapter
 
 
-        noteTrackerViewModel.notes.observe(viewLifecycleOwner, Observer {
+        viewModel.notes.observe(viewLifecycleOwner, Observer {
             it?.let {
                 adapter.setNotes(it)
             }
@@ -74,12 +72,12 @@ class NoteTrackerFragment : Fragment(){
 
 
 
-        noteTrackerViewModel.navigateNoteContent.observe(viewLifecycleOwner, Observer { note ->
+        viewModel.navigateNoteContent.observe(viewLifecycleOwner, Observer { note ->
             note?.let {
                 this.findNavController().navigate(
                     NoteTrackerFragmentDirections
                         .fragmentNoteTrackerToFragmentNoteContent(note))
-                noteTrackerViewModel.onNoteContentNavigated()
+                viewModel.onNoteContentNavigated()
             }
         })
 

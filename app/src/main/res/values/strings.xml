@@ -16,4 +16,15 @@
 
     <!--Shared Preference Keys -->
     <string name="preference_fact_type_key">fact_type_pref</string>
+    <string name="profile_picture_content_desc">Profile picture</string>
+    <string name="delete_account_label">Удалить аккаунт</string>
+    <string name="sign_out">Выйти</string>
+    <string name="welcome">Добро пожаловать.</string>
+    <string name="dialog_sign_in_content">После входа данные будут сохраняться в базе данных</string>
+    <string name="sign_in">Войти</string>
+    <string name="firebase_auth_no_network_connection">Нет подключения к Интернету.</string>
+    <string name="firebase_auth_unknown_error">Неизвестная ошибка.</string>
+    <string name="dialog_sign_out_content">Данные сохраняются в базе данных</string>
+    <string name="no">Нет</string>
+    <string name="yes">Да</string>
 </resources>

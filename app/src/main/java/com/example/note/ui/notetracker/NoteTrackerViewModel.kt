@@ -1,24 +1,17 @@
 package com.example.note.ui.notetracker
 
-import android.app.Application
+import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewModelScope
+import androidx.lifecycle.asLiveData
 import com.example.note.data.Note
-import com.example.note.data.NoteRoomDatabase
 import com.example.note.repo.NoteRepository
-import com.example.note.util.provideRepository
 
-class NoteTrackerViewModel(
-    application: Application) : ViewModel() {
+class NoteTrackerViewModel @ViewModelInject constructor(
+    repository: NoteRepository) : ViewModel() {
 
-    val repository: NoteRepository = provideRepository(application.applicationContext)
-    val notes: LiveData<List<Note>>
-
-    init{
-        notes = repository.noteList
-    }
+    val notes: LiveData<List<Note>> = repository.noteList.asLiveData()
 
     private val _navigateNoteContent = MutableLiveData<Int>()
     val navigateNoteContent
@@ -35,7 +28,6 @@ class NoteTrackerViewModel(
     fun addNoteContentNavigated() {
         _navigateNoteContent.value = -1
     }
-
 
 }
 

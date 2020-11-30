@@ -1,44 +1,39 @@
 package com.example.note.repo
 
-import androidx.annotation.WorkerThread
 import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
-import com.enpassion.twowaydatabindingkotlin.utils.AppExecutors
 import com.example.note.data.Note
-import com.example.note.data.NoteDao
 import com.example.note.data.NoteRoomDatabase
-import kotlinx.coroutines.*
-import kotlin.coroutines.coroutineContext
+import kotlinx.coroutines.flow.Flow
+import javax.inject.Inject
+import javax.inject.Singleton
 
-class NoteRepository (private val noteDatabase: NoteRoomDatabase, private val mExecutors: AppExecutors) {
+@Singleton
+class NoteRepository @Inject constructor(private val noteDatabase: NoteRoomDatabase) {
 
-    val noteList: LiveData<List<Note>>
-        get() = noteDatabase.noteDao().getAllNotes()
+    val noteList: Flow<List<Note>> get() = noteDatabase.noteDao().getAllNotes()
 
-    fun getNote(noteId: Int): LiveData<Note> = noteDatabase.noteDao().getNote(noteId)
+    fun getNote(noteId: Int): Flow<Note> = noteDatabase.noteDao().getNote(noteId)
 
-    fun insert(note: Note) {
-        mExecutors.diskIO().execute{ noteDatabase.noteDao().insert(note) }
+    suspend fun insert(note: Note) {
+        noteDatabase.noteDao().insert(note)
     }
 
-    fun update(note: Note) {
-        mExecutors.diskIO().execute{ noteDatabase.noteDao().update(note) }
+    suspend fun update(note: Note) {
+        noteDatabase.noteDao().update(note)
     }
 
-    fun delete(note: Note) {
-        mExecutors.diskIO().execute{ noteDatabase.noteDao().delete(note) }
+    suspend fun delete(note: Note) {
+        noteDatabase.noteDao().delete(note)
     }
 
 
     companion object {
         private var sInstance: NoteRepository? = null
-
-        fun getInstance(database: NoteRoomDatabase, executors: AppExecutors): NoteRepository {
+        fun getInstance(database: NoteRoomDatabase): NoteRepository {
             return sInstance ?: synchronized(this) {
                 sInstance
                     ?: NoteRepository(
                         database,
-                        executors
                     ).also { sInstance = it }
             }
         }

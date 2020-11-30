@@ -14,20 +14,11 @@ abstract class NoteRoomDatabase :RoomDatabase(){
     abstract fun noteDao(): NoteDao
 
     companion object{
-
-        @Volatile
-        private var INSTANCE: NoteRoomDatabase? = null
-
-        fun getDatabase(
-            context: Context) : NoteRoomDatabase{
-            return INSTANCE ?: synchronized(this) {
-                INSTANCE ?: Room.databaseBuilder(context.applicationContext,
-                    NoteRoomDatabase::class.java, "note_database")
-                    .build()
-                    .also { INSTANCE = it }
-            }
+        private const val databaseName = "note_database"
+        fun buildDatabase(context: Context): NoteRoomDatabase {
+            return Room.databaseBuilder(context, NoteRoomDatabase::class.java, databaseName)
+                .fallbackToDestructiveMigration()
+                .build()
         }
-
-
     }
 }

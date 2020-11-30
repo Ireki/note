@@ -1,24 +1,24 @@
 package com.example.note.ui.notecontent
 
+import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.*
 import com.example.note.data.Note
 import com.example.note.repo.NoteRepository
+import kotlinx.coroutines.coroutineScope
 import kotlinx.coroutines.launch
 import java.util.*
 
 
-class NoteContentViewModel(
+class NoteContentViewModel @ViewModelInject constructor(
     private val repo: NoteRepository,
-    private val noteId: Int = -1
 ) : ViewModel() {
 
-    var noteModified: LiveData<Note>
-
+    lateinit var noteModified: LiveData<Note>
     private var isEdit: Boolean = false
 
-    init {
+    fun setNote(noteId: Int){
         if (noteId != -1) {
-            noteModified = repo.getNote(noteId)
+            noteModified = repo.getNote(noteId).asLiveData()
             isEdit = true
         }
         else{
@@ -26,18 +26,24 @@ class NoteContentViewModel(
         }
     }
 
+
     private fun insert(note: Note?) {
-        note?.let{
-            it.dateUpdate = Calendar.getInstance().getTime()
-            repo.insert(it)
+        viewModelScope.launch {
+            note?.let{
+                it.dateUpdate = Calendar.getInstance().getTime()
+                repo.insert(it)
+            }
         }
     }
 
     private fun update(note: Note?) {
-        note?.let{
-            it.dateUpdate = Calendar.getInstance().getTime()
-            repo.update(it)
-        }
+         viewModelScope.launch {
+             note?.let{
+                 it.dateUpdate = Calendar.getInstance().getTime()
+                 repo.update(it)
+             }
+         }
+
     }
 
     fun saveNote() {
