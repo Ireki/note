@@ -22,6 +22,10 @@
             app:enterAnim="@anim/slide_in_right"
             app:popEnterAnim="@anim/slide_in_right" />
 
+        <action
+            android:id="@+id/fragmentNoteTracker_to_dialogSignIn"
+            app:destination="@id/dialog_sign_in"/>
+
     </fragment>
 
     <fragment
@@ -35,24 +39,18 @@
             android:defaultValue="-1"
             app:argType="integer" />
 
-        <action
-            android:id="@+id/action_fragmentNoteContent_to_fragmentNoteTracker"
-            app:destination="@id/fragment_note_tracker"
-            app:launchSingleTop="false"
-            app:popUpTo="@+id/fragment_note_tracker"
-            app:popUpToInclusive="true" />
     </fragment>
 
     <fragment
         android:id="@+id/mySettingsFragment"
         android:name="com.example.note.ui.settings.MySettingsFragment"
-        android:label="MySettingsFragment">
-        <action
-            android:id="@+id/fragmentSettings_to_fragmentNoteTracker"
-            app:destination="@id/fragment_note_tracker"
-            app:enterAnim="@anim/slide_in_right"
-            app:popEnterAnim="@anim/slide_in_right" />
-    </fragment>
+        android:label="MySettingsFragment"/>
+
+
+    <dialog
+        android:id="@+id/dialog_sign_in"
+        android:name="com.example.note.ui.signin.SignInDialogFragment"
+        android:label="SignInDialog"/>
 
 
    <!-- <fragment

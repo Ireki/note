@@ -88,7 +88,8 @@ class NoteTrackerFragment : Fragment(){
                         .fragmentNoteTrackerToFragmentSettings()
                 )
             }
-            if (item?.itemId == R.id.menu_authentication) launchSignInFlow()
+            if (item?.itemId == R.id.menu_authentication)
+                findNavController().navigate(R.id.dialog_sign_in)
             true
         })
 
@@ -97,30 +98,5 @@ class NoteTrackerFragment : Fragment(){
         return binding.root
     }
 
-    private fun launchSignInFlow() {
-
-        val providers = arrayListOf(
-            AuthUI.IdpConfig.EmailBuilder().build(),
-            AuthUI.IdpConfig.GoogleBuilder().build()
-        )
-
-        startActivityForResult(AuthUI
-            .getInstance()
-            .createSignInIntentBuilder()
-            .setAvailableProviders(providers)
-            .build(),
-            SIGN_IN_RESULT_CODE
-        )
-    }
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        super.onActivityResult(requestCode, resultCode, data)
-
-        if (requestCode == SIGN_IN_RESULT_CODE) {
-            val response = IdpResponse.fromResultIntent(data)
-            if (resultCode == Activity.RESULT_OK) {
-                val user = FirebaseAuth.getInstance().currentUser
-            }
-        }
-    }
 
 }

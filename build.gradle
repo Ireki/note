@@ -6,6 +6,8 @@ buildscript {
         hilt_version = '2.30.1-alpha'
         hilt_jetpack_version = '1.0.0-alpha02'
         lifecycle_version = '2.2.0'
+        firebase_auth_version = '20.0.1'
+        firebase_bom_version = '26.1.0'
     }
     repositories {
         google()
@@ -18,8 +20,6 @@ buildscript {
         classpath 'com.google.gms:google-services:4.3.4'
         classpath "com.google.dagger:hilt-android-gradle-plugin:$hilt_version"
 
-        // NOTE: Do not place your application dependencies here; they belong
-        // in the individual module build.gradle files
     }
 }
 
